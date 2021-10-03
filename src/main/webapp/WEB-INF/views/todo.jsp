@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 <title>Todo's</title>
 </head>
 <body>
@@ -19,13 +20,16 @@
 			<p>Your Todo's:</p>
 			<ol>
 				<c:forEach items="${todos}" var="todo">
-					<li>${todo.name}&bnsp; &bnsp; <a href="delete-todo.do?todo=${todo.name}">Delete</a></li>
+					<li>${todo.name}&bnsp;&bnsp; <a	href="delete-todo.do?todo=${todo.name}">Delete</a></li>
 				</c:forEach>
 			</ol>
 			<form action="/todo.do" method="post">
-			<input type="text" name="todo" placeholder="Some todo" required="required" /> <input type="submit" value="Add" />
+			<input type="text" name="todo" placeholder="Some todo" required="required" /> 
+			<input type="submit" value="Add" />
 			</form>
 		</div>
 	</article>
 </body>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </html>
