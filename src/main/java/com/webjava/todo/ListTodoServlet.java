@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/todo.do")
-public class TodoServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/list-todo.do")
+public class ListTodoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private TodoManager todoManager = new TodoManager();
@@ -17,14 +17,9 @@ public class TodoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		request.getSession().setAttribute("todos", todoManager.getTodos());
+		request.setAttribute("todos", todoManager.getTodos());
 		request.getRequestDispatcher("/WEB-INF/views/todo.jsp").forward(request, response);
 	}
-
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-		todoManager.addTodo(new Todo(request.getParameter("todo")));
-		response.sendRedirect("/todo.do");
-	}
+	
+	
 }

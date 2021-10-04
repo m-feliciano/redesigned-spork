@@ -30,10 +30,10 @@ public class LoginServlet extends HttpServlet {
 
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-
+		
 		if (service.isUserValid(name, password)) {
-			request.getSession().setAttribute("name", name); //session scope
-			response.sendRedirect("/todo.do");
+			request.getSession().setAttribute("name", name); // session scope
+			response.sendRedirect("/list-todo.do");
 		} else {
 			request.setAttribute("errorMessage", "Invalid credentials!");
 			request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);

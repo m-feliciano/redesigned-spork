@@ -1,4 +1,4 @@
-package com.webjava.todo;
+package com.webjava.logout;
 
 import java.io.IOException;
 
@@ -8,16 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/delete-todo.do")
-public class DeleteTodoServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/logout.do")
+public class LogoutServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	private TodoManager todoManager = new TodoManager();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		todoManager.addRemove(new Todo(request.getParameter("todo")));
-		response.sendRedirect("/list-todo.do");
+		request.getSession().invalidate();
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
 }

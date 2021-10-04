@@ -1,35 +1,48 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- prefix c = shortcut -->
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<title>Todo's</title>
+<title>Todos</title>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="../public/css/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<header>
-		<div>
-			<p>Welcome, ${name} !</p>
-		</div>
+		<nav class="navbar navbar-default">
+			<a href="/" class="navbar-brand">Brand</a>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="/list-todo.do">Todos</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/logout.do">Logout</a></li>
+			</ul>
+		</nav>
 	</header>
 	<article>
-		<div>
-			<p>Your Todo's:</p>
+		<div class="container">
+			<H1>Welcome, ${name}</H1>
+			<h3>Your todo's list</h3>
 			<ol>
 				<c:forEach items="${todos}" var="todo">
-					<li>${todo.name}&bnsp;&bnsp; <a	href="delete-todo.do?todo=${todo.name}">Delete</a></li>
+					<li>${todo.name}&nbsp;&nbsp;<a href="delete-todo.do?todo=${todo.name}">Delete</a></li>
 				</c:forEach>
 			</ol>
-			<form action="/todo.do" method="post">
-			<input type="text" name="todo" placeholder="Some todo" required="required" /> 
-			<input type="submit" value="Add" />
+			<p>
+				<font color="red">${errorMessage}</font>
+			</p>
+			<form action="add-todo.do" method="post">
+				New Todo: <input type="text" name="todo" placeholder="Some todo"
+					required="required" /> <input type="submit" value="Submit Query" />
 			</form>
 		</div>
 	</article>
+	<footer class="footer">
+		<p>footer content</p>
+	</footer>
+	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+	<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
-<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </html>
