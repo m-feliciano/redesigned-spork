@@ -4,10 +4,14 @@ import java.util.Objects;
 
 public class Todo {
 
-	private String name;
+	private String name, category;
 
 	public Todo() {
+	}
 
+	public Todo(String name, String category) {
+		this.name = name;
+		this.category = category;
 	}
 
 	public Todo(String name) {
@@ -22,14 +26,17 @@ public class Todo {
 		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return "Todo [name=" + name + "]";
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name);
+		return Objects.hash(category, name);
 	}
 
 	@Override
@@ -41,7 +48,12 @@ public class Todo {
 		if (getClass() != obj.getClass())
 			return false;
 		Todo other = (Todo) obj;
-		return Objects.equals(name, other.name);
+		return Objects.equals(category, other.category) && Objects.equals(name, other.name);
+	}
+
+	@Override
+	public String toString() {
+		return "Todo [name=" + name + ", category=" + category + "]";
 	}
 
 }
