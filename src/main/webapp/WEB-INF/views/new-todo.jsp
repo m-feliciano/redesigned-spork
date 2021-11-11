@@ -1,7 +1,7 @@
 <%@ include file="../common/header.jspf"%>
 <%@ include file="../common/nav.jspf"%>
 <article>
-	<div class="container">
+	<div class="container" style="position: static;">
 		<h3>Your new Todo</h3>
 		<p>
 			<font color="red">${errorMessage}</font>
@@ -15,7 +15,7 @@
 				<label>Category</label> <input class="form-control" type="text"
 					name="category" placeholder="Some category" required="required" />
 			</fieldset>
-			<input class="btn btn-success" type="submit" value="Submit" />
+			<input class="btn btn-success botao" type="submit" value="Submit" />
 		</form>
 	</div>
 </article>

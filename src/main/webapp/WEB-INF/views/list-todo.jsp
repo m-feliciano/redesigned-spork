@@ -5,8 +5,8 @@
 		<H1>Welcome, ${name}</H1>
 		<h3>Your Todo's list</h3>
 
-		<table class="table table-striped">
-			<thead>
+		<table class="table table-striped table-hover">
+			 <thead class="table-dark">
 				<th>Description</th>
 				<th>Category</th>
 				<th>Actions</th>
