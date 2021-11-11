@@ -1,4 +1,4 @@
-package com.webjava;
+package com.webjava.todo;
 
 import java.io.IOException;
 
@@ -8,15 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@SuppressWarnings("serial")
-@WebServlet(urlPatterns = "/login.do")
-public class LoginServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/list-todo.do")
+public class ListTodoServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	private TodoManager todoManager = new TodoManager();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-
-		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-
+		request.setAttribute("todos", todoManager.getTodos());
+		request.getRequestDispatcher("/WEB-INF/views/list-todo.jsp").forward(request, response);
 	}
+	
+	
 }
